@@ -25,6 +25,8 @@ createContext({
             }
         }
     }
-}).then(context => {}).otherwise(error => {
+}).then(context => {
+    process.on('SIGINT', context.destroy);
+}).otherwise(error => {
     console.error(error);
 });

@@ -6,7 +6,7 @@ export default function forkProcessPlugin() {
     const openedProcesses = [];
 
     const closeOpenedProcesses = () => {
-        console.log('closeOpenedProcesses...........');
+        console.log('closeOpenedProcesses...');
         _.forEach(openedProcesses, (proc) => {
             proc.kill('SIGINT');
         });

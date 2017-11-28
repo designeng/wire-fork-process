@@ -29,5 +29,5 @@ createContext({
     if(process.send) process.send(APP_LAUNCH_SUCCESS);
     process.on('SIGINT', stopApp(0));
 }).otherwise(error => {
-    console.error(error);
+    if(process.send) process.send(APP_LAUNCH_ERROR);
 });
