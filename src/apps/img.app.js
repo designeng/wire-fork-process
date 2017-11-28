@@ -8,11 +8,17 @@ import {APP_LAUNCH_SUCCESS, APP_LAUNCH_ERROR} from '../config/constants';
 const name = 'IMAGE APP';
 
 createContext({
-    $plugins: [applicationPlugin],
+    $plugins: [
+        applicationPlugin
+    ],
 
     app: {
         expressApplication: {
             name
+        },
+        router: {
+            healthCheckRoute: `/_/healthcheck`,
+            wildcard: '*'
         },
         server: {
             port: process.env.IMG_PORT || 3003

@@ -14,6 +14,10 @@ createContext({
         expressApplication: {
             name
         },
+        router: {
+            healthCheckRoute: `/_/healthcheck`,
+            wildcard: '*'
+        },
         server: {
             port: process.env.PORT || 3000
         }

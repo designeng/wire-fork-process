@@ -3,9 +3,30 @@ import express from 'express';
 
 const noop = () => {}
 
+const notFound = (response) => response.status(404).end('404');
+
 export default function ExpressAppPlugin(options) {
 
     let appName;
+
+    function router(resolver, facet, wire) {
+        let { target } = facet;
+        wire(facet.options).then(({
+            healthCheckRoute,
+            wildcard
+        }) => {
+            target.get(healthCheckRoute, (request, response, next) => {
+                response.status(200).end('green');
+            });
+
+            target.get(wildcard, (request, response, next) => notFound(response));
+            target.post(wildcard, (request, response, next) => notFound(response));
+            target.put(wildcard, (request, response, next) => notFound(response));
+            target.delete(wildcard, (request, response, next) => notFound(response));
+
+            resolver.resolve(target);
+        });
+    }
 
     function startExpressServer(resolver, facet, wire) {
         const { port } = facet.options;
@@ -38,6 +59,9 @@ export default function ExpressAppPlugin(options) {
             expressApplication
         },
         facets: {
+            router: {
+                'ready:before': router
+            },
             server: {
                 ready: startExpressServer
             }
