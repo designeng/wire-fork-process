@@ -1,5 +1,6 @@
+import path from 'path';
 import createContext from './lib/createContext';
-import forkProcessPlugin from './plugins/forkProcessPlugin';
+import forkProcessPlugin from './plugins/fork';
 
 createContext({
     $plugins: [forkProcessPlugin],
@@ -8,7 +9,7 @@ createContext({
         forkProcess: {
             args: {
                 path: path.resolve(`${__dirname}/apps/runner`),
-                params: ['img', 1]
+                params: ['--img=1']
             }
         }
     },
@@ -20,7 +21,7 @@ createContext({
             },
             args: {
                 path: path.resolve(`${__dirname}/apps/runner`),
-                params: ['main', 1]
+                params: ['--main=1']
             }
         }
     }
