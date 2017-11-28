@@ -1,19 +1,11 @@
-import when from 'when';
+import _ from 'underscore';
 import express from 'express';
 
-let Promise = when.Promise;
 const noop = () => {}
 
 export default function ExpressAppPlugin(options) {
 
     let appName;
-
-    const cleanup = () => Promise((resolve, reject) => {
-        setTimeout(() => {
-            console.log(`Clean up ${appName} before exit`);
-            resolve();
-        }, 300);
-    })
 
     function startExpressServer(resolver, facet, wire) {
         const { port } = facet.options;
@@ -52,14 +44,12 @@ export default function ExpressAppPlugin(options) {
         },
         context: {
             shutdown: (resolver, wire) => {
-                when(cleanup()).then(() => {
-                    resolver.resolve();
-                });
+                console.log(`Clean up ${appName} before exit`);
+                resolver.resolve();
             },
             error: (resolver, wire, err) => {
-                when(cleanup()).then(() => {
-                    resolver.reject();
-                });
+                console.log(`Clean up ${appName} before exit with error ${err}`);
+                resolver.reject();
             }
         }
     }
