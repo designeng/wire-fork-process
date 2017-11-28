@@ -6,6 +6,7 @@ let Promise = when.Promise;
 const cleanup = (name) => () => Promise((resolve, reject) => {
     setTimeout(() => {
         console.log(`Clean up ${name} before exit`);
+        resolve();
     }, 300);
 });
 

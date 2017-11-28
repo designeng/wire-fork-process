@@ -5,8 +5,6 @@ import cleanup from '../lib/cleanup';
 import applicationPlugin from '../plugins/express/application';
 import {APP_LAUNCH_SUCCESS, APP_LAUNCH_ERROR} from '../config/constants';
 
-console.log('process.env.PORT:::', process.env.PORT);
-
 const name = 'MAIN APP';
 
 createContext({

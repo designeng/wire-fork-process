@@ -11,6 +11,7 @@ export default function ExpressAppPlugin(options) {
     const cleanup = () => Promise((resolve, reject) => {
         setTimeout(() => {
             console.log(`Clean up ${appName} before exit`);
+            resolve();
         }, 300);
     })
 

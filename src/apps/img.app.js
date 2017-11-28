@@ -5,8 +5,6 @@ import cleanup from '../lib/cleanup';
 import applicationPlugin from '../plugins/express/application';
 import {APP_LAUNCH_SUCCESS, APP_LAUNCH_ERROR} from '../config/constants';
 
-console.log('process.env.IMG_PORT:::', process.env.IMG_PORT);
-
 const name = 'IMAGE APP';
 
 createContext({
