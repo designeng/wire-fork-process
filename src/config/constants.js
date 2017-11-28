@@ -1,0 +1,4 @@
+module.exports = {
+    APP_LAUNCH_SUCCESS: 'APP_LAUNCH_SUCCESS',
+    APP_LAUNCH_ERROR: 'APP_LAUNCH_ERROR'
+}

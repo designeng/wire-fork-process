@@ -1,0 +1,25 @@
+{
+  "name": "wire-express-memory-leaks-test",
+  "version": "0.0.1",
+  "description": "",
+  "main": "runner.js",
+  "scripts": {
+    "start": "PORT=3000 IMG_PORT=3003 node ./runner"
+  },
+  "keywords": [],
+  "author": "Denis Savenok <denissavenok@gmail.com> (http://designeng.github.io/)",
+  "license": "ISC",
+  "dependencies": {
+    "essential-wire": "git://github.com/designeng/essential-wire#0.1",
+    "express": "^4.16.2",
+    "underscore": "^1.8.3",
+    "yargs": "^10.0.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-lodash": "^3.2.11",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-env": "^1.6.0"
+  }
+}
